@@ -68,6 +68,35 @@
             that.boxObj = $('#' + el[0] + times);
         }).auto(times);
     }
+    Box.pt.auto = function(index){
+    	var that = this, config = that.config, boxObj = $('#' + el[0] + index);
+    	if(config.area[0] == '' && config.maxWidth > 0){
+    		if(/MSIE 7/.test(navigator.userAgent) && config.btn){
+    			boxObj.width(boxObj.innerWidth());
+    			boxObj.outerWidth() > config.maxWidth && boxObj.width(config.maxWidth);
+    		}
+    	}
+    	var area = [boxObj.innerWidth(), boxObj.innerHeight()];
+    	var titleHeight = boxObj.find(el[0]).outerHeight() || 0;
+    	var btnHeight = boxObj.find('.' + el[6]);
+    	function setHeight(el){
+    		el = boxObj.find(el);
+    		el.height(area[1] - titleHeight - btnHeight);
+    	}
+    	switch(config.type){
+    		case 2:
+    		setHeight('iframe');
+    		break;
+    		default:
+    		if(area[1] === ''){
+
+    		}else{
+    			
+    		}
+    		break;
+    	}
+
+    }
 
     ready.run = function(){
         box.open = function(opt){
