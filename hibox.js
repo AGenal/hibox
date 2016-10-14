@@ -24,8 +24,8 @@
         },
         closeAll: function(type){
             $('.' + el[0]).each(function(){
-                var self = $(this),
-                var is = type ? (type === self.attr('type')) ? 1 : '';
+                var self = $(this);
+                var is = type ? (type === self.attr('type')) : 1;
                 is && box.close(box.attr('times'));
                 is = null;
             });
@@ -34,8 +34,8 @@
 
     ready = {
         config: {},
-        btn: ['确定'， '取消'],
-        type: ['dialog', 'page', 'iframe', 'loading', 'tips'];
+        btn: ['sure', 'cancel'],
+        type: ['dialog', 'page', 'iframe', 'loading', 'tips']
     },
 
     BOX = funciton(opt){
