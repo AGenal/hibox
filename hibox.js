@@ -1,10 +1,28 @@
 ;+function(win){
 
-    var el = ['hibox', 'hibox-title', 'hibox-main', 'hibox-dialog', 'hibox-iframe', 'hibox-content', 'hibox-btn', 'hibox-btn', 'hibox-close']
+    var el = ['hibox', 'hibox-title', 'hibox-main', 'hibox-dialog', 'hibox-iframe', 'hibox-content', 'hibox-btn', 'hibox-btn', 'hibox-close'];
 
     var box = {
-        alert: function(){
-
+        alert: function(content, options, yes){
+        	var type = typeof options === 'function';
+        	if(type) yes = options;
+        	return box.show($.extend({
+        		content: content,
+        		yes: yes
+        	}), type ? {} : options);
+        },
+        confirm: function(content, options, yes, cancel){
+        	var type = typeof options === 'function';
+        	if(type){
+        		cancel = yes;
+        		yes = options;
+        	};
+        	return box.show($.extend({
+        		content: content,
+        		btn: ready.btn,
+        		yes: yes,
+        		btn2: cancel
+        	}), type ? {});
         },
         msg: function(content, options, end){
 
